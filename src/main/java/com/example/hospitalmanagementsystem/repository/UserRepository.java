@@ -1,0 +1,16 @@
+package com.example.hospitalmanagementsystem.repository;
+
+import com.example.hospitalmanagementsystem.entity.User;
+import com.example.hospitalmanagementsystem.entity.type.AuthProviderType;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    Optional<User> findByUsername(String username);
+
+    Optional<User> findByProviderIdAndAuthProviderType(String providerId, AuthProviderType providerType);
+}
